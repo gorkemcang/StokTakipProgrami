@@ -1,0 +1,35 @@
+﻿@model IEnumerable<StokTakipProgrami.Entity.Category>
+
+@{
+	ViewData["Title"] = "CategoryList";
+	Layout = "AdminLayout";
+	int sıra = 1;
+}
+<div class="main-container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var category in Model)
+			{
+				<tr>
+					<td>@sıra</td>
+					<td>@category.CategoryName</td>
+					<td>
+						<a href="@Url.Action("CategoryEdit", new { id = category.CategoryId })">Edit</a> |
+						<a href="@Url.Action("CategoryDelete", new { id = category.CategoryId })">Delete</a>
+					</td>
+				</tr>
+				sıra++;
+			}
+		</tbody>
+	</table>
+
+	<a href="@Url.Action("CategoryAdd")">Add New Category</a>
+</div>
+

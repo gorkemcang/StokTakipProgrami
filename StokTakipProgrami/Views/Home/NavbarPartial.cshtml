@@ -1,0 +1,87 @@
+﻿@*
+Ana Navbar Layout parçası
+*@
+
+<div class="left-side-bar">
+    <div class="brand-logo">
+        <a asp-area="" asp-controller="Dashboard" asp-action="Dashboard">
+            <img src="~/admin/vendors/images/Beyaz_Logo_Transparan.png" alt="" class="light-logo" />
+            <img src="~/admin/vendors/images/kırmızı_logo_transparan.png"
+                 alt=""
+                 class="dark-logo" />
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-grid"></span><span class="mtext">Ürünler</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a asp-area="" asp-controller="Products" asp-action="ProductList">Ürün Listesi</a></li>
+                        <li><a asp-area="" asp-controller="Products" asp-action="ProductAdd">Ürün Ekleme</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-back"></span><span class="mtext">Kategoriler</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a asp-area="" asp-controller="Category" asp-action="CategoryList">Kategoriler</a></li>
+                        <li><a asp-area="" asp-controller="Category" asp-action="CategoryAdd">Kategori Ekleme</a></li>
+                        <li><a asp-area="" asp-controller="#" asp-action="#">Kategori-Ürün Listesi</a></li>
+                    </ul>
+                </li>
+                 <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-person"></span><span class="mtext">Hesabım</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a asp-area="" asp-controller="#" asp-action="#">Profilim</a></li>
+                        <li><a asp-area="" asp-controller="#" asp-action="#">Parolamı Unuttum</a></li>
+                        <li><a asp-area="" asp-controller="#" asp-action="#">Parola Sıfırla</a></li>
+                        <li><a asp-area="" asp-controller="#" asp-action="#">Çıkış</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a asp-controller="#" asp-action="#" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-bar-chart-line"></span></span><span class="mtext">Analiz</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Writer" asp-action="WriterNotification" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-bell"></span><span class="mtext">Bildirimler</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-file-pdf"></span><span class="mtext">Dokümanlar</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#">Doküman 1</a></li>
+                        <li><a href="#">Doküman 2</a></li>
+                        <li><a href="#">Doküman 3</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-layers-half"></span><span class="mtext">Biz Kimiz</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">İletişim</a></li>
+                        <li><a href="#">Gizlilik Sözleşmesi</a></li>
+                        <li><a asp-area="" asp-controller="#" asp-action="FAQ">S.S.S.</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
