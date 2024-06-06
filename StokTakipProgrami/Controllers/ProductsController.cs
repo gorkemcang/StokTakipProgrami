@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StokTakipProgrami.Concrate;
 using StokTakipProgrami.Entity;
+using StokTakipProgrami.Models;
+using System.Diagnostics;
 
 namespace StokTakipProgrami.Controllers
 {
@@ -22,11 +24,30 @@ namespace StokTakipProgrami.Controllers
 			return View(values);
 		}
 
+		public IActionResult ProductDetail(int id)
+		{
+			var values = _productManager.GetProductById(id);
+			return View(values);
+		}
 		// GET: Add Product View
 		public IActionResult ProductAdd()
 		{
 			ViewBag.Categories = _categoryManager.GetListCategory();
 			return View();
+		}
+
+		[HttpGet]
+		public IActionResult ProductAdd(int id)
+		{
+			var product = _productManager.GetProductById(id);
+			if (product == null)
+			{
+				// Handle the case when the product is not found
+				return NotFound();
+			}
+			ViewBag.Categories = _categoryManager.GetListCategory();
+			return View(product);
+
 		}
 
 		// POST: Add Product
@@ -38,23 +59,24 @@ namespace StokTakipProgrami.Controllers
 				_productManager.AddProduct(product);
 				return RedirectToAction("ProductList");
 			}
-			ViewBag.Categories = _categoryManager.GetListCategory();
+			ViewBag.Category = _categoryManager.GetListCategory();
 			return View(product);
 		}
 
-		// GET: Edit Product View
+		[HttpGet]
 		public IActionResult ProductEdit(int id)
 		{
 			var product = _productManager.GetProductById(id);
 			if (product == null)
 			{
+				// Handle the case when the product is not found
 				return NotFound();
 			}
 			ViewBag.Categories = _categoryManager.GetListCategory();
 			return View(product);
+
 		}
 
-		// POST: Edit Product
 		[HttpPost]
 		public IActionResult ProductEdit(Product product)
 		{
@@ -63,7 +85,7 @@ namespace StokTakipProgrami.Controllers
 				_productManager.UpdateProduct(product);
 				return RedirectToAction("ProductList");
 			}
-			ViewBag.Categories = _categoryManager.GetListCategory();
+			ViewBag.Category = _categoryManager.GetListCategory();
 			return View(product);
 		}
 
@@ -75,20 +97,18 @@ namespace StokTakipProgrami.Controllers
 			{
 				return NotFound();
 			}
-			return View(product);
-		}
 
-		// POST: Delete Product
-		[HttpPost, ActionName("ProductDelete")]
-		public IActionResult ProductDeleteConfirmed(int id)
-		{
-			var product = _productManager.GetProductById(id);
-			if (product == null)
+			try
 			{
-				return NotFound();
+				_productManager.DeleteProduct(product);
+				return RedirectToAction("ProductList");
 			}
-			_productManager.DeleteProduct(product);
-			return RedirectToAction("ProductList");
+			catch (Exception ex)
+			{
+				// Hata durumunu yönetmek için bir logger kullanabilir veya hata mesajı gösterebilirsiniz.
+				// Örneğin: Logger.LogError(ex, "Ürün silme işlemi sırasında bir hata oluştu.");
+				return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			}
 		}
 	}
 }

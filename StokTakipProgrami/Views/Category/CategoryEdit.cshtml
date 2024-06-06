@@ -8,9 +8,10 @@
 	<form asp-action="CategoryEdit" method="post">
 		<input type="hidden" name="CategoryId" value="@Model.CategoryId" />
 		<div class="form-group">
-			<label for="Name">Category Name</label>
+			<label for="Name">Kategori Adı </label>
 			<input type="text" class="form-control" id="Name" name="Name" value="@Model.CategoryName" />
 		</div>
-		<button type="submit" class="btn btn-primary">Update Category</button>
+		<button type="submit" class="btn btn-primary">Kategori Güncelle</button>
+		<a href="CategoryList.cshtml" class="btn btn-outline-info">İptal</a>
 	</form>
 </div>

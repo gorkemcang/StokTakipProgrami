@@ -1,42 +1,44 @@
-﻿@*
-    Ürün Ekleme sayfası
-*@
-
-@model StokTakipProgrami.Entity.Product;
+﻿@model StokTakipProgrami.Entity.Product
 @{
-	ViewData["Title"] = "ProdustAdd";
-	Layout = "AdminLayout";
+    ViewData["Title"] = "ProductAdd";
+    Layout = "AdminLayout";
 }
 
-@using (Html.BeginForm("ProductAdd", "Product", FormMethod.Post, new { enctype = "multiplatform/form-data" }))
+@using (Html.BeginForm("ProductAdd", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-	<h4> Yeni Ürün Ekleme</h4>
-	<p> Yeni ürün ekleme sayfası</p>
+    <h4>Yeni Ürün Ekleme</h4>
+    <p>Yeni ürün ekleme sayfası</p>
 
-	<div class="form-group">
-		@Html.LabelFor(x => x.Name, "Ürün Adı")
-		@Html.TextBoxFor(x => x.Name, new{ @class="form-control", placeholder = "Ürün Adı"})
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(x => x.Description, "Açıklama")
-		@Html.TextBoxFor(x => x.Description, new{ @class="form-control", placeholder = "Ürün Açıklama"})
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(x => x.Price, "Fiyat")
-		@Html.TextBoxFor(x => x.Price, new{ @class="form-control", placeholder = "Fiyat"})
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(x => x.StockQuantity, "Ürün Adedi")
-		@Html.TextBoxFor(x => x.StockQuantity, new{ @class="form-control", placeholder = "Ürün Adedi"})
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(x => x.CategoryId, "Kategori")
-		@Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new{ @class="form-control", placeholder = "Ürün Adı"})
-	</div>
-	<div class="form-group">
-		@Html.LabelFor(x => x.ImageUrl, "Görsel")
-		@Html.TextBoxFor(x => x.ImageUrl, new{ @class="form-control", placeholder = "Görsel"})
-	</div>
-	<button class=" btn-primary btn-block"> Kaydet</button>
-	<a class=" btn-info btn-block" href="ProductList.cshtml">İptal</a>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, "Ürün Adı")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Ürün Adı" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description, "Açıklama")
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", placeholder = "Ürün Açıklama" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Price, "Fiyat")
+        @Html.TextBoxFor(x => x.Price, new { @class = "form-control", placeholder = "Fiyat" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StockQuantity, "Ürün Adedi")
+        @Html.TextBoxFor(x => x.StockQuantity, new { @class = "form-control", placeholder = "Ürün Adedi" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.CategoryId, "Kategori")
+        <select class="form-control" id="CategoryId" name="CategoryId">
+            <option value="">Kategori Seçin</option>
+            @foreach (var category in ViewBag.Category)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ImageUrl, "Görsel")
+        @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", placeholder = "Görsel" })
+    </div>
+    <button class="btn btn-primary btn-block">Kaydet</button>
+    <a class="btn btn-info btn-block" asp-controller="Products" asp-action="ProductList">İptal</a>
 }

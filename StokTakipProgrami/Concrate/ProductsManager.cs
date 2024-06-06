@@ -3,17 +3,12 @@ using StokTakipProgrami.Database;
 
 namespace StokTakipProgrami.Concrate
 {
-	public class ProductsManager
-	{
+	public class ProductsManager(Context context)
+    {
 		ProductsManager _productsManager;
-		private readonly Context _context;
+		private readonly Context _context = context;
 
-		public ProductsManager(Context context)
-		{
-			_context = context;
-		}
-
-		public List<Product> GetListProduct()
+        public List<Product> GetListProduct()
 		{
 			return _context.Products.ToList();
 		}

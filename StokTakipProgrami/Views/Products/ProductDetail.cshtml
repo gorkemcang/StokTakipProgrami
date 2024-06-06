@@ -1,7 +1,7 @@
 ﻿@using StokTakipProgrami.Database
 @model StokTakipProgrami.Entity.Product
 @{
-    ViewData["Title"] = "ProductEdit";
+    ViewData["Title"] = "ProductDetail";
     Layout = "AdminLayout";
 }
 <div class="main-container">
@@ -10,30 +10,29 @@
         <form asp-action="ProductEdit" method="post">
             <div class="form-group">
                 <label for="Name">Ürün Adı</label>
-                <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" />
+                <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" readonly />
             </div>
             <div class="form-group">
                 <label for="Name">Açıklama</label>
-                <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description" />
+                <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description" readonly />
             </div>
             <div class="form-group">
                 <label for="Description">Kategori</label>
-                <input type="text" class="form-control" id="CategoryId" name="CategoryId" value="@Model.CategoryId" />
+                <input type="text" class="form-control" id="CategoryId" name="CategoryId" value="@Model.CategoryId" readonly />
             </div>
             <div class="form-group">
                 <label for="Price">Fiyat</label>
-                <input type="number" class="form-control" id="Price" name="Price" value="@Model.Price" />
+                <input type="number" class="form-control" id="Price" name="Price" value="@Model.Price" readonly />
             </div>
             <div class="form-group">
                 <label for="Stock">Stok</label>
-                <input type="number" class="form-control" id="StockQuantity" name="StockQuantity" value="@Model.StockQuantity" />
+                <input type="number" class="form-control" id="StockQuantity" name="StockQuantity" value="@Model.StockQuantity" readonly />
             </div>
             <div class="form-group">
                 <label for="ImageUrl">Görsel</label>
-                <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" value="@Model.ImageUrl" />
+                <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" value="@Model.ImageUrl" readonly />
             </div>
-            <button type="submit" class="btn btn-primary">Ürün Güncelle</button>
-            <a asp-controller="Products" asp-action="ProductList" class="btn btn-info">İptal</a>
+            <a asp-controller="Products" asp-action="ProductList" class="btn btn-info">Ürün Listesi</a>
         </form>
     }
     else

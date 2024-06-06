@@ -15,14 +15,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var category in Model)
+			@foreach (var item in Model)
 			{
 				<tr>
 					<td>@sıra</td>
-					<td>@category.CategoryName</td>
+					<td>@item.CategoryName</td>
 					<td>
-						<a href="@Url.Action("CategoryEdit", new { id = category.CategoryId })">Edit</a> |
-						<a href="@Url.Action("CategoryDelete", new { id = category.CategoryId })">Delete</a>
+						<a href="CategoryEdit/@item.CategoryId">Düzenle</a> |
+						<a href="CategoryDeleteConfirmed/@item.CategoryId">Sil</a>
 					</td>
 				</tr>
 				sıra++;
@@ -30,6 +30,6 @@
 		</tbody>
 	</table>
 
-	<a href="@Url.Action("CategoryAdd")">Add New Category</a>
+	<a href="CategoryAdd" class="btn btn-primary">Yeni Kategori Ekle</a>
 </div>
 

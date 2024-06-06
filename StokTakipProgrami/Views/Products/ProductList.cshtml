@@ -13,7 +13,9 @@
 			<div class="card-box mb-30">
 				<div class="pd-20">
 					<h4 class="text-blue h4">ÜRÜNLER LİSESİ</h4>
+					<a href="ProductAdd" type="button" class="btn btn-outline-primary text-right">Ürün Ekle</a>
 				</div>
+				
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
@@ -48,9 +50,9 @@
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+												<a class="dropdown-item" href="ProductDetail/@item.Id"><i class="dw dw-eye"></i> Görüntüle</a>
+												<a class="dropdown-item" href="ProductEdit/@item.Id"><i class="dw dw-edit2"></i> Düzenle</a>
+												<a class="dropdown-item" href="ProductDelete/@item.Id"><i class="dw dw-delete-3"></i> Sil</a>
 											</div>
 										</div>
 									</td>

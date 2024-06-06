@@ -1,15 +1,16 @@
 ﻿@model StokTakipProgrami.Entity.Category
 
 @{
-	ViewData["Title"] = "CategoryList";
-	Layout = "AdminLayout";
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "AdminLayout";
 }
+
 <div class="main-container">
-	<form asp-action="CategoryAdd" method="post">
-		<div class="form-group">
-			<label for="Name">Category Name</label>
-			<input type="text" class="form-control" id="Name" name="Name" value="@Model.CategoryName" />
-		</div>
-		<button type="submit" class="btn btn-primary">Add Category</button>
-	</form>
+    <form asp-action="CategoryAdd" method="post">
+        <div class="form-group">
+            <label for="CategoryName">Kategori Adı</label>
+            <input type="text" class="form-control" id="CategoryName" name="CategoryName" value="@Model?.CategoryName" />
+        </div>
+        <button type="submit" class="btn btn-primary">Kategori Ekle</button>
+    </form>
 </div>

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StokTakipProgrami.Concrate;
 using StokTakipProgrami.Entity;
+using StokTakipProgrami.Models;
+using System.Diagnostics;
 
 namespace StokTakipProgrami.Controllers
 {
@@ -38,7 +40,7 @@ namespace StokTakipProgrami.Controllers
             return View(category);
         }
 
-        // GET: Edit Category View
+        [HttpGet]
         public IActionResult CategoryEdit(int id)
         {
             var category = _categoryManager.GetCategoryById(id);
@@ -49,7 +51,6 @@ namespace StokTakipProgrami.Controllers
             return View(category);
         }
 
-        // POST: Edit Category
         [HttpPost]
         public IActionResult CategoryEdit(Category category)
         {
@@ -76,13 +77,21 @@ namespace StokTakipProgrami.Controllers
         [HttpPost, ActionName("CategoryDelete")]
         public IActionResult CategoryDeleteConfirmed(int id)
         {
-            var category = _categoryManager.GetCategoryById(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            _categoryManager.DeleteCategory(category);
-            return RedirectToAction("CategoryList");
-        }
+			var category = _categoryManager.GetCategoryById(id);
+			if (category == null)
+			{
+				return NotFound();
+			}
+
+			try
+			{
+				_categoryManager.DeleteCategory(category);
+				return RedirectToAction("CategoryList");
+			}
+			catch (Exception ex)
+			{
+				return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+			}
+		}
     }
 }
