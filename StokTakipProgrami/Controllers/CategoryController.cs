@@ -62,36 +62,12 @@ namespace StokTakipProgrami.Controllers
             return View(category);
         }
 
-        // GET: Delete Category
+        
         public IActionResult CategoryDelete(int id)
         {
-            var category = _categoryManager.GetCategoryById(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Delete Category
-        [HttpPost, ActionName("CategoryDelete")]
-        public IActionResult CategoryDeleteConfirmed(int id)
-        {
 			var category = _categoryManager.GetCategoryById(id);
-			if (category == null)
-			{
-				return NotFound();
-			}
-
-			try
-			{
-				_categoryManager.DeleteCategory(category);
-				return RedirectToAction("CategoryList");
-			}
-			catch (Exception ex)
-			{
-				return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-			}
+            _categoryManager.DeleteCategory(category);
+            return RedirectToAction("CategoryList");
 		}
     }
 }

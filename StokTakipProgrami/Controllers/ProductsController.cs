@@ -74,8 +74,8 @@ namespace StokTakipProgrami.Controllers
 			}
 			ViewBag.Categories = _categoryManager.GetListCategory();
 			return View(product);
-
 		}
+
 
 		[HttpPost]
 		public IActionResult ProductEdit(Product product)
@@ -85,9 +85,11 @@ namespace StokTakipProgrami.Controllers
 				_productManager.UpdateProduct(product);
 				return RedirectToAction("ProductList");
 			}
-			ViewBag.Category = _categoryManager.GetListCategory();
+			ViewBag.Categories = _categoryManager.GetListCategory(); // Fix the typo here from "Category" to "Categories"
 			return View(product);
 		}
+
+
 
 		// GET: Delete Product
 		public IActionResult ProductDelete(int id)

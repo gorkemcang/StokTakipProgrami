@@ -39,5 +39,10 @@ namespace StokTakipProgrami.Concrate
 			_context.Categories.Remove(category);
 			_context.SaveChanges();
 		}
+
+		public static implicit operator CategoryManager(ProductsManager v)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
